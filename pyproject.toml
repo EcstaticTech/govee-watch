@@ -4,14 +4,24 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "govee-watch"
-version = "0.0.1"
-description = "BLE presence/advertisement scanner and Wi-Fi LAN probe for Govee bulbs"
+version = "0.4.0"
+description = "BLE presence/advertisement scanner, local API, and GATT controller for Govee bulbs on Windows"
 requires-python = ">=3.11"
 dependencies = [
-    "bleak>=0.22.0",
+    "bleak==3.1.0",
+    "fastapi>=0.115.0",
     "govee-ble>=0.38.0",
     "govee-python>=0.10.0",
     "python-dotenv>=1.0.0",
+    "uvicorn>=0.32.0",
+]
+
+[project.scripts]
+govee-watch = "govee_watch.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
 ]
 
 [tool.setuptools.packages.find]
